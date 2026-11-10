@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Die Karte des Rumtreibers</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="intro" id="intro">
+    <div class="intro-content">
+      <div class="intro-star">✦</div>
+      <p class="small-heading">Eine magische Entdeckung</p>
+      <h1>Die Karte<br>des Rumtreibers</h1>
+      <p class="intro-text">Für neugierige Hexen, Zauberer und nächtliche Entdecker.</p>
+      <button id="open-map">Karte öffnen ✦</button>
+      <p class="intro-small">Ich schwöre feierlich, ich bin ein Tunichtgut.</p>
+    </div>
+  </div>
+
+  <header>
+    <div class="header-top">HOGWARTS · SCHULE FÜR HEXEREI UND ZAUBEREI</div>
+    <h1>Die Karte des Rumtreibers</h1>
+    <p>Geheime Wege. Verborgene Räume. Unerwartete Begegnungen.</p>
+  </header>
+
+  <nav>
+    <a href="#karte">✦ Die Karte</a>
+    <a href="#entdecken">✦ Entdecken</a>
+    <a href="#geheimnisse">✦ Geheimnisse</a>
+  </nav>
+
+  <main>
+    <section class="welcome">
+      <div class="welcome-line"></div>
+      <p class="welcome-label">WILLKOMMEN IN HOGWARTS</p>
+      <h2>Ein Schloss voller Geheimnisse.</h2>
+      <p>
+        Hogwarts ist viel grösser, als es auf den ersten Blick scheint.
+        Hinter jeder Wand könnte sich ein Gang verbergen.
+        Und nicht jeder Raum ist dort, wo man ihn erwartet.
+      </p>
+      <div class="welcome-line"></div>
+    </section>
+
+    <section id="karte" class="map-section">
+      <div class="section-heading">
+        <span>✧</span>
+        <h2>Die magische Karte</h2>
+        <span>✧</span>
+      </div>
+      <p class="instruction">
+        Wähle einen Ort auf der Karte aus, um ihn zu erkunden.
+      </p>
+
+      <div class="map-tools">
+        <input id="search-place" type="text" placeholder="Einen Ort suchen ...">
+        <button id="search-button">Suchen</button>
+        <button id="secret-paths">Geheimgänge zeigen</button>
+        <button id="footsteps-button">Fussspuren starten</button>
+      </div>
+
+      <div class="map-paper">
+        <div class="map-topline">
+          <span>HOGWARTS</span>
+          <span>✦ ✧ ✦</span>
+          <span>UNGEFÄHRER GRUNDRISS</span>
+        </div>
+
+        <div class="map-scroll">
+          <svg id="hogwarts-map" viewBox="0 0 900 650" role="img" aria-label="Interaktive, fantasievoll gestaltete Karte von Hogwarts">
+
+            <defs>
+              <pattern id="paper-lines" width="8" height="8" patternUnits="userSpaceOnUse">
+                <path d="M0 8 L8 0" stroke="#9b754b" stroke-width=".3" opacity=".2"/>
+              </pattern>
+            </defs>
+
+            <rect x="0" y="0" width="900" height="650" fill="url(#paper-lines)"/>
+
+            <!-- Wege -->
+            <g class="normal-paths">
+              <path d="M110 310 Q210 280 300 330 T480 300 T700 340"
+                    class="path"/>
+              <path d="M300 330 Q320 220 430 160 T620 130"
+                    class="path"/>
+              <path d="M480 300 Q540 400 640 460 T790 510"
+                    class="path"/>
+              <path d="M300 330 Q220 420 170 500"
+                    class="path"/>
+            </g>
+
+            <!-- Geheimgänge -->
+            <g id="secret-path-group" class="secret-path-group">
+              <path d="M300 330 Q250 200 130 150" class="secret-path"/>
+              <path d="M480 300 Q720 190 790 130" class="secret-path"/>
+              <path d="M640 460 Q730 560 820 570" class="secret-path"/>
+              <path d="M170 500 Q90 550 70 590" class="secret-path"/>
+              <text x="160" y="130" class="secret-label">GEHEIM!</text>
+              <text x="745" y="105" class="secret-label">VERBORGEN</text>
+            </g>
+
+            <!-- Gebäude -->
+            <g class="building" data-place="grosse-halle" tabindex="0" role="button">
+              <rect x="335" y="255" width="190" height="110" rx="5"/>
+              <path d="M335 255 L430 205 L525 255"/>
+              <path d="M370 255 L430 220 L490 255"/>
+              <text x="430" y="300">Grosse Halle</text>
+              <text x="430" y="322" class="tiny">✦ ✦ ✦</text>
+            </g>
+
+            <g class="building" data-place="bibliothek" tabindex="0" role="button">
+              <rect x="80" y="230" width="155" height="85" rx="4"/>
+              <path d="M80 230 L155 195 L235 230"/>
+              <text x="157" y="275">Bibliothek</text>
+              <text x="157" y="294" class="tiny">Bücher & Wissen</text>
+            </g>
+
+            <g class="building" data-place="eulerei" tabindex="0" role="button">
+              <rect x="620" y="65" width="150" height="85" rx="4"/>
+              <path d="M620 65 L695 25 L770 65"/>
+              <text x="695" y="108">Eulerei</text>
+              <text x="695" y="128" class="tiny">✉ Briefe</text>
+            </g>
+
+            <g class="building" data-place="kerker" tabindex="0" role="button">
+              <rect x="585" y="370" width="150" height="90" rx="4"/>
+              <path d="M585 370 L660 335 L735 370"/>
+              <text x="660" y="414">Kerker</text>
+              <text x="660" y="435" class="tiny">Unterirdisch</text>
+            </g>
+
+            <g class="building" data-place="turm" tabindex="0" role="button">
+              <rect x="350" y="60" width="155" height="90" rx="4"/>
+              <path d="M350 60 L428 15 L505 60"/>
+              <text x="428" y="105">Astronomieturm</text>
+              <text x="428" y="125" class="tiny">☾ Sternenhimmel</text>
+            </g>
+
+            <g class="building" data-place="krankenfluegel" tabindex="0" role="button">
+              <rect x="95" y="430" width="155" height="85" rx="4"/>
+              <path d="M95 430 L172 395 L250 430"/>
+              <text x="172" y="475">Krankenflügel</text>
+              <text x="172" y="495" class="tiny">Ruhe & Erholung</text>
+            </g>
+
+            <g class="building" data-place="treppenhalle" tabindex="0" role="button">
+              <rect x="350" y="455" width="180" height="85" rx="4"/>
+              <path d="M350 455 L440 420 L530 455"/>
+              <text x="440" y="495">Treppenhalle</text>
+              <text x="440" y="515" class="tiny">Stufen in Bewegung</text>
+            </g>
+
+            <g class="building" data-place="gewächshaus" tabindex="0" role="button">
+              <rect x="720" y="470" width="140" height="85" rx="4"/>
+              <path d="M720 470 L790 430 L860 470"/>
+              <text x="790" y="510">Gewächshaus</text>
+              <text x="790" y="530" class="tiny">Pflanzen & Magie</text>
+            </g>
+
+            <!-- Kompass -->
+            <g class="compass" transform="translate(810 245)">
+              <circle r="45"/>
+              <path d="M0 -35 L9 0 L0 35 L-9 0 Z"/>
+              <text x="0" y="-52">N</text>
+              <text x="0" y="64">S</text>
+            </g>
+
+            <!-- Fussabdrücke -->
+            <g id="moving-footprints">
+              <text class="footprint" x="275" y="365">👣</text>
+              <text class="footprint" x="300" y="375">👣</text>
+              <text class="footprint" x="325" y="385">👣</text>
+            </g>
+
+            <text x="450" y="610" class="map-note">Nicht alle Wege sind für gewöhnliche Besucher bestimmt ...</text>
+          </svg>
+        </div>
+
+        <div class="map-bottomline">
+          <span>✦ MARAUDERS' MAP ✦</span>
+          <span>Die Karte vergisst nichts.</span>
+        </div>
+      </div>
+
+      <div class="map-legend">
+        <span><i class="legend-dot"></i> Bekannte Orte</span>
+        <span><i class="legend-dash"></i> Geheimgänge</span>
+        <span>👣 Bewegliche Fussspuren</span>
+      </div>
+
+      <div class="place-info" id="place-info">
+        <span class="info-symbol">✧</span>
+        <div>
+          <p class="info-kicker">DEIN AUSGEWÄHLTER ORT</p>
+          <h3 id="place-title">Noch kein Ort ausgewählt</h3>
+          <p id="place-description">
+            Klicke auf eines der Gebäude auf der Karte.
+            Vielleicht entdeckst du etwas Besonderes.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="entdecken" class="discover-section">
+      <div class="section-heading">
+        <span>✧</span>
+        <h2>Was möchtest du entdecken?</h2>
+        <span>✧</span>
+      </div>
+
+      <div class="discover-grid">
+        <button class="discover-card" data-place="bibliothek">
+          <span>📚</span>
+          <strong>Die Bibliothek</strong>
+          <small>Ein Ort voller Wissen</small>
+        </button>
+        <button class="discover-card" data-place="grosse-halle">
+          <span>🕯️</span>
+          <strong>Die Grosse Halle</strong>
+          <small>Das Herz von Hogwarts</small>
+        </button>
+        <button class="discover-card" data-place="turm">
+          <span>🌙</span>
+          <strong>Der Astronomieturm</strong>
+          <small>Dem Himmel ganz nah</small>
+        </button>
+        <button class="discover-card" data-place="gewächshaus">
+          <span>🌿</span>
+          <strong>Die Gewächshäuser</strong>
+          <small>Magische Pflanzen</small>
+        </button>
+      </div>
+    </section>
+
+    <section id="geheimnisse" class="secret-section">
+      <div class="section-heading">
+        <span>✧</span>
+        <h2>Die Geheimnisse der Karte</h2>
+        <span>✧</span>
+      </div>
+      <p>
+        Manche Geheimnisse zeigen sich erst, wenn man genau hinsieht.
+        Die Karte ist voller kleiner Überraschungen.
+      </p>
+      <div class="secret-box">
+        <span class="secret-icon">🪄</span>
+        <h3>Die magischen Worte</h3>
+        <p>Versuche, das Geheimnis der Karte zu lüften.</p>
+        <input id="secret-word" placeholder="Geheimes Wort ...">
+        <button id="secret-submit">Enthüllen</button>
+        <p id="secret-answer"></p>
+      </div>
+      <p class="final-words">Missetat begangen. ✦</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>✦ Eine Karte für neugierige Entdecker ✦</p>
+    <p>HOGWARTS · MAGISCHE ORTE · GEHEIME WEGE</p>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
